@@ -1,22 +1,23 @@
-const API_KEY = "YOUR_API_KEY";
-
+const API_KEY = "121fb0fa";
+const BASE_URL = "https://www.omdbapi.com/";
 // SEARCH FUNCTION
-async function searchMovies() {
-  const query = document.getElementById("search").value;
+async function searchMovies(query) {
+  if (!query) return;
 
   document.getElementById("movies").innerHTML = "Loading...";
 
   try {
     const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`
+      `${BASE_URL}?apikey=${API_KEY}&s=${query}`
     );
 
     const data = await res.json();
 
-    displayMovies(data.results);
+    moviesData = data.Search || [];
+    displayMovies(moviesData);
 
-  } catch (error) {
-    console.log("Error:", error);
+  } catch (err) {
+    console.log(err);
   }
 }
 
@@ -24,11 +25,16 @@ async function searchMovies() {
 function displayMovies(movies) {
   const container = document.getElementById("movies");
 
+  if (!movies.length) {
+    container.innerHTML = "No movies found";
+    return;
+  }
+
   container.innerHTML = movies.map(movie => `
-    <div class="movie">
-      <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" />
-      <h3>${movie.title}</h3>
-      <p>${movie.release_date}</p>
+    <div class="movie" onclick="getMovieDetails('${movie.imdbID}')">
+      <img src="${movie.Poster !== "N/A" ? movie.Poster : ''}" />
+      <h3>${movie.Title}</h3>
+      <p>📅 ${movie.Year}</p>
     </div>
   `).join("");
 }
