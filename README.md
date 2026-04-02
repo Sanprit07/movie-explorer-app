@@ -16,9 +16,6 @@ OMDb API - http://www.omdbapi.com/
 
 * Search movies by name
 * Display movie posters and details
-* Sort movies by year
-* Filter movies by type
-* Add to favorites
 * Responsive design
 
 ## 🛠 Tech Stack
