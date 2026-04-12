@@ -10,6 +10,7 @@
   <header>
     <h1>🎬 Movie Explorer</h1>
 
+    <!-- SEARCH -->
     <input 
       type="text" 
       id="search" 
@@ -17,16 +18,37 @@
       onkeyup="debounceSearch(this.value)"
     >
 
+    <!-- SORT -->
     <select id="sort">
       <option value="">Sort</option>
-      <option value="rating">Top Rated</option>
       <option value="date">Latest</option>
     </select>
 
+  <!-- YEAR FILTER -->
+    <select id="yearFilter">
+    <option value="">Year</option>
+    <option value="latest">Latest (After 2015)</option>
+    <option value="old">Old (Before 2010)</option>
+    </select>
+
+    <!-- CATEGORY -->
+    <select id="genre">
+    <option value="">Category</option>
+    <option value="action">Action</option>
+    <option value="comedy">Comedy</option>
+    <option value="drama">Drama</option>
+    </select>
+
+
+    <!-- DARK MODE -->
     <button onclick="toggleTheme()">🌙</button>
   </header>
 
+  <!-- MOVIES -->
   <main id="movies"></main>
+
+  <!-- DETAILS MODAL -->
+  <div id="modal" class="modal hidden"></div>
 
   <script src="script.js"></script>
 </body>
