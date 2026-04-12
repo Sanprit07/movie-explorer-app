@@ -41,7 +41,7 @@ button {
 }
 
 .movie {
-  background: #222;
+  background: hsl(0, 0%, 13%);
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s;
